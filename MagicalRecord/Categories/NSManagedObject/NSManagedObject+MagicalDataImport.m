@@ -168,6 +168,8 @@ NSString * const kMagicalRecordImportAttributeUseDefaultValueWhenNotPresent = @"
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 - (BOOL) MR_preImport:(id)objectData;
 {
     if ([self respondsToSelector:@selector(shouldImport:)])
@@ -196,6 +198,7 @@ NSString * const kMagicalRecordImportAttributeUseDefaultValueWhenNotPresent = @"
     }
     return YES;
 }
+#pragma clang diagnostic pop
 
 - (BOOL) MR_performDataImportFromObject:(id)objectData relationshipBlock:(void(^)(NSRelationshipDescription*, id))relationshipBlock;
 {
