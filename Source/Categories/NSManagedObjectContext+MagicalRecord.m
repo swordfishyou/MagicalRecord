@@ -240,10 +240,10 @@ static void const * kMagicalRecordNotifiesMainContextAssociatedValueKey = @"kMag
         SEL selector = enabled ? @selector(MR_observeContextOnMainThread:) : @selector(MR_stopObservingContext:);
         objc_setAssociatedObject(self, kMagicalRecordNotifiesMainContextAssociatedValueKey, [NSNumber numberWithBool:enabled], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"        
+_Pragma("clang diagnostic push")
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
         [mainContext performSelector:selector withObject:self];
-#pragma clang diagnostic pop
+_Pragma("clang diagnostic pop")
                                  )
         PRIVATE_QUEUES_ENABLED(
                                [self setParentContext:mainContext];
